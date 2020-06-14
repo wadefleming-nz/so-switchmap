@@ -36,9 +36,9 @@ class Main{
 
   quizes: Observable<JobbyAndUser[]> = this.responseQuizes.snapshotChanges().pipe(
     flatMap(jobbys => jobbys),    // map array to single values
-    switchMap(jobby => // use switchmap to handle subsciption to user service observable
+    switchMap(jobby =>            // use switchmap to handle subsciption to user service observable
       this.userService.getUserById(jobby.idJobber).pipe(map(user => ({id: jobby.id, user})),
-       toArray()),    // convert from single values back to array
+       toArray()),                // convert from single values back to array
   ));
 }
 
